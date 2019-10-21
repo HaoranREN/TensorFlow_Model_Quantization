@@ -4,7 +4,7 @@ When using the Tensorflow Python API methods above to implement model quantizati
 
 **This is a tutorial of model quantization using TensorFlow, with suggestions based on personal experience.** The Tensorflow version here in examples is **1.14**, and models are built with **`tf.keras`**. Since the Tensorflow team said they are working on a new package [`Tensorflow Model Optimiaztion`](https://www.tensorflow.org/model_optimization), which includes some new implementations of model quantization per their [roadmap](https://www.tensorflow.org/model_optimization/guide/roadmap), I will keep looking for their updates and merge them into this repository if possible. The last modification here was on **10/6/2019**, where in the roadmap, the [Post Training Quantization for Hybrid Kernels](https://medium.com/tensorflow/introducing-the-model-optimization-toolkit-for-tensorflow-254aca1ba0a3) (Post-training weight quantization) and [Post Training Quantization for (8b) Fixed-point Kernels](https://medium.com/tensorflow/tensorflow-model-optimization-toolkit-post-training-integer-quantization-b4964a1ea9ba) (Post-training integer quantization) are launched.
 
-**You are welcome to comment any issues, concerns, and suggestions, as well as anything regarding to Tensorflow updates. If you found this repository to be useful, I would like to thank you for your generosity to star this repository.**
+**You are welcome to comment any issues, concerns, and suggestions, as well as anything regarding to Tensorflow updates. If you found this repository to be useful, I would like to thank you for your generosity to star** :star2: **this repository.**
 
 # TensorFlow Model Quantization
 
@@ -22,4 +22,10 @@ TensorFlow supports two levels of model quantizations in general (see [this link
 
 **Quantization-aware training** trains a model that can be quantized by `tf.lite.converter` with minimal accuracy loss. It uses `tf.contrib.quantize` to rewrite the training/eval graph to add fake quantization nodes. Fake quantization nodes simulate the errors introduced by quantization during training, so that the errors can be calibrated in the following training process. It also generates tensor min/max values that are required by the `tf.lite.converter`.
 
-Comparing with quantization-aware training, post-training quantization is simpler to use, and it only requires an already-trained floating-point mode. Based on the roadmap release above, while quantization-aware training is still expected for some models that accuracy is strict required, the Tensorflow team is expecting it to be rare as they improve post-training quantization tools to a negligible accuracy loss.
+Comparing with quantization-aware training, post-training quantization is simpler to use, and it only requires an already-trained floating-point mode. Based on the [roadmap](https://www.tensorflow.org/model_optimization/guide/roadmap) release above, while quantization-aware training is still expected for some models that accuracy is strict required, the Tensorflow team is expecting it to be rare as they improve post-training quantization tools to a negligible accuracy loss.
+
+Quoting from Tensorflow:
+
+> In summary, a user should use “hybrid” post training quantization when targeting simple CPU size and latency improvements. When targeting greater CPU improvements or fixed-point accelerators, they should use this integer post training quantization tool, potentially using quantization-aware training if accuracy of a model suffers.
+
+Please go the each directory for details about the three model quantization tools.
