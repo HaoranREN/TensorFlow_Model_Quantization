@@ -28,4 +28,4 @@ Quoting from Tensorflow:
 
 > In summary, a user should use “hybrid” post training quantization when targeting simple CPU size and latency improvements. When targeting greater CPU improvements or fixed-point accelerators, they should use this integer post training quantization tool, potentially using quantization-aware training if accuracy of a model suffers.
 
-Please go the each directory for details about the three model quantization tools.
+Please go each directory for details about the three model quantization tools.
