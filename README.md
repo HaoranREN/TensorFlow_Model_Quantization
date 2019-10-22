@@ -18,7 +18,9 @@ TensorFlow supports two levels of model quantizations in general (see [this link
 
 - [Quantization-aware training](https://github.com/tensorflow/tensorflow/tree/r1.14/tensorflow/contrib/quantize) (training with quantization)
 
-**Post-training quantization** directly converts a trained model into a hybrid or fully-quantized [`tf.lite`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite) model using [`tf.lite.TFLiteConverter`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite/TFLiteConverter), with degradation in model accuracy. Post-training weight quantization only quantize model weights (convolution layer kernels, dense layer weights, etc.) to reduce model size and speedup computations by allowing hybrid operations (mix of fixed- and floating-point math). Post-training integer quantization fully quantize the model to support fixed-point-only hardware accelerators.
+In general, quantization in Tensforflow uses [`tf.lite.TFLiteConverter`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite/TFLiteConverter) to convert a float-point model to a [`tf.lite`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite) model. A `tf.lite` model contains some/only fixed-point values. Some parameters of `tf.lite.TFLiteConverter` can be tuned to indicate the expected quantization method.
+
+**Post-training quantization** directly converts a trained model into a hybrid or fully-quantized `tf.lite` model using `tf.lite.TFLiteConverter`, with degradation in model accuracy. Post-training weight quantization only quantize model weights (convolution layer kernels, dense layer weights, etc.) to reduce model size and speedup computations by allowing hybrid operations (mix of fixed- and floating-point math). Post-training integer quantization fully quantize the model to support fixed-point-only hardware accelerators.
 
 **Quantization-aware training** trains a model that can be quantized by `tf.lite.TFLiteConverter` with minimal accuracy loss. It uses [`tf.contrib.quantize`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/contrib/quantize) to rewrite the training/eval graph to add fake quantization nodes. Fake quantization nodes simulate the errors introduced by quantization during training, so that the errors can be calibrated in the following training process. It also generates tensor min/max values that are required by the `tf.lite.TFLiteConverter`.
 
@@ -28,4 +30,4 @@ Quoting from Tensorflow:
 
 > In summary, a user should use “hybrid” post training quantization when targeting simple CPU size and latency improvements. When targeting greater CPU improvements or fixed-point accelerators, they should use this integer post training quantization tool, potentially using quantization-aware training if accuracy of a model suffers.
 
-Please go each directory for details about the three model quantization tools.
+**Please go each directory for details about the three model quantization tools.**
