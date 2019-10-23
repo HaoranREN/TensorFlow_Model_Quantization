@@ -33,7 +33,7 @@ def build_keras_model():
         tf.keras.layers.Dense(10, activation=tf.nn.softmax)
     ])
 
-# train the model, quantization-aware training (finetuning) after $[quant_delay] steps
+# train the model, quantization-aware training after $[quant_delay] steps
 
 train_batch_size = 50
 train_batch_number = train_data.shape[0]
@@ -127,7 +127,7 @@ for i in range(quantize_eval_data.shape[0]):
     if (eval_labels[i]) == np.argmax(prediction):
         acc += 1
 
-print('Quantization-aware training (finetuning) accuracy: ' + str(acc / len(eval_data)))
+print('Quantization-aware training accuracy: ' + str(acc / len(eval_data)))
 
 '''
 # check the tensor data type
