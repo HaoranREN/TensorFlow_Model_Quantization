@@ -47,7 +47,7 @@ The differences are, a fused batch normalization layer is kind of a wrapper laye
 
 | Fused | Unfused|
 | --- | --- |
-| ![Fused](other/fused.png) | ![Unfused](other/unfused.png) |
+| ![Fused](/other/fused.png) | ![Unfused](/other/unfused.png) |
 
 ###### Activation Layers
 
