@@ -39,7 +39,7 @@ def build_keras_model():
     ])
 ```
 
-## Train the model, quantization-aware training (finetuning) after $[quant_delay] steps
+## Train the model, quantization-aware training after $[quant_delay] steps
 
 Since quantization-aware training required fake quantization nodes are added in training/eval graphs, we should gain access to them by defining graphs manully before the training/eval session. Also, we are targeting a quantized model for inference, so the final conversion should be done with an eval graph. Thus, we save the model to checkpoint at the end of the training session, and load it again for saving to a frozen graph in an eval session.
 
@@ -158,7 +158,7 @@ for i in range(quantize_eval_data.shape[0]):
     if (eval_labels[i]) == np.argmax(prediction):
         acc += 1
 
-print('Quantization-aware training (finetuning) accuracy: ' + str(acc / len(eval_data)))
+print('Quantization-aware training accuracy: ' + str(acc / len(eval_data)))
 ```
 
 ## Check the tensor data type
