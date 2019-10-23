@@ -1,4 +1,4 @@
-# Post-training Weight Quantization
+# [Post-training Weight Quantization](https://www.tensorflow.org/lite/performance/post_training_quant)
 
 ###### Information below is version sensitive, time sensitive, and empirical, check the main [README.md](https://github.com/HaoranREN/TensorFlow_Model_Quantization) for details
 ###### See this [Google Colab ipynb](https://colab.research.google.com/drive/119GkmswoaO4GZV5rQ5W9q8W2BlPeedYr) for sample output
