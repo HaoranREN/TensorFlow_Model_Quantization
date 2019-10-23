@@ -1,4 +1,4 @@
-# Quantization-aware Training
+# [Quantization-aware Training](https://github.com/tensorflow/tensorflow/tree/r1.14/tensorflow/contrib/quantize)
 
 ###### Information below is version sensitive, time sensitive, and empirical, check the main [README.md](https://github.com/HaoranREN/TensorFlow_Model_Quantization) for details
 ###### See [quantization_aware_training.md](quantization_aware_training.md) for some code-side comments
@@ -34,6 +34,8 @@ For some of the unsupported architectures, there are some 'tricks' I found based
 Also, not all Tensorflow operations are supported by `tf.lite`. The compatibility is listed in this [webpage](https://www.tensorflow.org/lite/guide/ops_compatibility). According to this page, operations may be elided or fused, before the supported operations are mapped to their TensorFlow Lite counterparts. This means the operation sequence or layer order matters. I did encounter some problems of supported operations being not supported in some operation combinations.
 
 The supportability issues are often version sensitive, even some online resources are very helpful, some can also be outdated. Thus, when facing such a supportability issue, my suggestion would be, take some experiments to do whatever can be done to modify the model, even with some minor behavior changes if accuracy is acceptable, such as skip a layer or change layer order. Below are some 'tricks' that I found, which worked well with my experiments.
+
+Some ideas/code are retrieved from these [discussions](https://github.com/tensorflow/tensorflow/issues/27880).
 
 ###### Batch Normalization Layers
 
