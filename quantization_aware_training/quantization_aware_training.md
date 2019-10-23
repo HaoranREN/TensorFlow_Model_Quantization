@@ -41,7 +41,7 @@ def build_keras_model():
 
 ## Train the model, quantization-aware training (finetuning) after $[quant_delay] steps
 
-Since quantization-aware training required fake quantization nodes are added in training/eval graphs, we should gain access to them by defining them manully before the training/eval session. Also, we are targeting a quantized model for inference, so the final conversion should be done with aa eval graph. Thus, we save the model to checkpoint at the end of the training session, and load it again for saving to a frozen graph in an eval session.
+Since quantization-aware training required fake quantization nodes are added in training/eval graphs, we should gain access to them by defining graphs manully before the training/eval session. Also, we are targeting a quantized model for inference, so the final conversion should be done with an eval graph. Thus, we save the model to checkpoint at the end of the training session, and load it again for saving to a frozen graph in an eval session.
 
 **The `quant_delay` parameter is the step to start quantization-aware training. In practice, letting the model to be trained with float-point first for a number of steps helps model convergency. The unit is step, so be clear with the math.**
 
