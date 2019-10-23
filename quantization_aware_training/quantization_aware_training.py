@@ -48,7 +48,7 @@ with train_graph.as_default():
 
     tf.contrib.quantize.create_training_graph(input_graph=train_graph, quant_delay=int(train_batch_number / train_batch_size * quant_delay_epoch))
 
-    train_sess.run(tf.global_variables_initializer())	 
+    train_sess.run(tf.global_variables_initializer())    
 
     train_model.compile(
         optimizer='adam',
@@ -73,21 +73,21 @@ eval_sess = tf.Session(graph=eval_graph)
 tf.keras.backend.set_session(eval_sess)
 
 with eval_graph.as_default():
-	tf.keras.backend.set_learning_phase(0)
-	eval_model = build_keras_model()
-	tf.contrib.quantize.create_eval_graph(input_graph=eval_graph)
-	eval_graph_def = eval_graph.as_graph_def()
-	saver = tf.train.Saver()
-	saver.restore(eval_sess, 'path_to_checkpoints')
+    tf.keras.backend.set_learning_phase(0)
+    eval_model = build_keras_model()
+    tf.contrib.quantize.create_eval_graph(input_graph=eval_graph)
+    eval_graph_def = eval_graph.as_graph_def()
+    saver = tf.train.Saver()
+    saver.restore(eval_sess, 'path_to_checkpoints')
     
-	frozen_graph_def = tf.graph_util.convert_variables_to_constants(
-		eval_sess,
-		eval_graph_def,
-		[eval_model.output.op.name]
-	)
+    frozen_graph_def = tf.graph_util.convert_variables_to_constants(
+        eval_sess,
+        eval_graph_def,
+        [eval_model.output.op.name]
+    )
 
-	with open('path_to_frozen_graph.pb', 'wb') as f:
-		f.write(frozen_graph_def.SerializeToString())
+    with open('path_to_frozen_graph.pb', 'wb') as f:
+        f.write(frozen_graph_def.SerializeToString())
 
 # convert to quantized tf.lite model
 
@@ -117,15 +117,15 @@ quantize_eval_data = np.array(eval_data * 255, dtype = np.uint8)
 acc = 0
 
 for i in range(quantize_eval_data.shape[0]):
-	quantize_image = quantize_eval_data[i]
-	quantize_image = quantize_image.reshape(1,28,28,1)
+    quantize_image = quantize_eval_data[i]
+    quantize_image = quantize_image.reshape(1,28,28,1)
 
-	interpreter.set_tensor(input_details[0]['index'], quantize_image)
-	interpreter.invoke()
-	prediction = interpreter.get_tensor(output_details[0]['index'])
+    interpreter.set_tensor(input_details[0]['index'], quantize_image)
+    interpreter.invoke()
+    prediction = interpreter.get_tensor(output_details[0]['index'])
 
-	if (eval_labels[i]) == np.argmax(prediction):
-		acc += 1
+    if (eval_labels[i]) == np.argmax(prediction):
+        acc += 1
 
 print('Quantization-aware training (finetuning) accuracy: ' + str(acc / len(eval_data)))
 
