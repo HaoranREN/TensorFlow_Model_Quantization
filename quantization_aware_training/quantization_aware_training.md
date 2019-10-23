@@ -131,7 +131,11 @@ open('path_to_quantized_model.tflite', 'wb').write(tflite_model)
 
 ## Load the quantized tf.lite model and test
 
-Construct a `tf.lite.Interpreter` to use the quantized model for inference. After setting the input tensor and invoking the `tf.lite.Interpreter`, we can have all the output tensors inside the model inference. Check the description of [`tf.lite.Interpreter`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite/Interpreter) for more details about function behavior.
+Construct a `tf.lite.Interpreter` to use the quantized model for inference. After setting the input tensor and invoking the `tf.lite.Interpreter`, we can have all the output tensors inside the model inference.
+
+**For a `tf.lite` model from quantization-aware training, be sure to map the values in your image for inference to the range of `uint8` (i.e. 0 - 255).**
+
+Check the description of [`tf.lite.Interpreter`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite/Interpreter) for more details about function behavior.
 
 ```python
 interpreter = tf.lite.Interpreter(model_path='path_to_quantized_model.tflite')
