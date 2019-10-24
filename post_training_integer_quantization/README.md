@@ -1,7 +1,6 @@
 # [Post-training Integer Quantization](https://www.tensorflow.org/lite/performance/post_training_integer_quant)
 
 ###### Information below is version sensitive, time sensitive, and empirical, check the main [README.md](https://github.com/HaoranREN/TensorFlow_Model_Quantization) for details
-###### See [quantization_aware_training.md](post_training_integer_quantization.md) for some code-side comments
 ###### See this [Google Colab ipynb](https://colab.research.google.com/drive/12tUYhjb8MbczoSgj2kjH5V2UYHrr7780) for sample output
 ###### Sample code is available [here](post_training_integer_quantization.py)
 
