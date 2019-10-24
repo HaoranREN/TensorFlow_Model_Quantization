@@ -3,7 +3,7 @@
 ###### Information below is version sensitive, time sensitive, and empirical, check the main [README.md](https://github.com/HaoranREN/TensorFlow_Model_Quantization) for details
 ###### See [quantization_aware_training.md](quantization_aware_training.md) for some code-side comments
 ###### See this [Google Colab ipynb](https://colab.research.google.com/drive/1hD_G2qD3ptlH9zrpT4GtDCD0GwXjt7K-) for sample output
-###### Sample code is avaiable [here](quantization_aware_training.py)
+###### Sample code is available [here](quantization_aware_training.py)
 
 Setting `tf.lite.TFLiteConverter.inference_type` to `tf.uint8` signals conversion to a fully quantized model, **only** from a quantization-aware trained input model. A quantization-aware trained model contains fake quantization nodes added by [`tf.contrib.quantize`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/contrib/quantize). Since `tf.contrib.quantize` rewrites the training/eval graph, the `tf.lite.TFLiteConverter` should be constructed by `tf.lite.TFLiteConverter.from_frozen_graph()`. This setup also requires `tf.lite.TFLiteConverter.quantized_input_stats` to be set. This parameter contains a **scalar** value and a **displacement** value of how to map the input data to values in the range of the inference data type (i.e. 0 - 255 for `uint8`), with the equation `real_input_value = (quantized_input_value - **displacement**) / **scalar**`. See the description of [`tf.lite.TFLiteConverter`](https://www.tensorflow.org/versions/r1.14/api_docs/python/tf/lite/TFLiteConverter) for more information. 
 
