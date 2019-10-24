@@ -19,7 +19,7 @@ After a regular training, the trained model only contains values in those weight
 - **Inputs:** defined by parameter settings, map to the range of the target data type
 - **Activations:** same as the data type in each of the operations
 - **Outputs:** defined by parameter settings
-- **Computation:** defined by parameter settings, check `tf.lite.TFLiteConverter.target_ops` below
+- **Computation:** defined by parameter settings, check `tf.lite.TFLiteConverter.target_ops` below. If input or output data type does not match the target operation data type, an operation will be added after input or before output to cast data type and map data range.
 - **`tf.lite.TFLiteConverter` Parameters:**
   - `tf.lite.TFLiteConverter.optimizations = [tf.lite.Optimize.DEFAULT]`
   - `tf.lite.TFLiteConverter.representative_dataset` required for calibration
