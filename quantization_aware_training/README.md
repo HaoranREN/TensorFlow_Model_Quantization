@@ -9,12 +9,12 @@ Setting `tf.lite.TFLiteConverter.inference_type` to `tf.uint8` signals conversio
 
 This conversion aims for a fully quantized model, but any operations that do not have quantized implementations will throw errors.
 
-## Specifications
+## Inference Specifications
 
-- **Inference Inputs:** `unit8` type, map the original data to the range of 0 - 255
+- **Inputs:** `unit8` type, map the original data to the range of 0 - 255
 - **Activations:** `unit8` type
 - **Outputs:** `uint8` type
-- **Inference Computation:** all in fixed-point type
+- **Computation:** all in fixed-point type
 - **`tf.lite.TFLiteConverter` Parameters:**
   - Construct by `tf.lite.TFLiteConverter.from_frozen_graph()`
   - `tf.lite.TFLiteConverter.inference_type = tf.uint8`
