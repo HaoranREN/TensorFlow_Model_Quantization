@@ -22,7 +22,7 @@ After a regular training, the trained model only contains values in those weight
 - **`tf.lite.TFLiteConverter` Parameters:**
   - `tf.lite.TFLiteConverter.optimizations = [tf.lite.Optimize.DEFAULT]`
   - `tf.lite.TFLiteConverter.representative_dataset` required for calibration
-  - `tf.lite.TFLiteConverter.inference_input_type` and `tf.lite.TFLiteConverter.inference_output_type` set to target data type, default to `tf.float32`, supports `tf.float32, tf.uint8, tf.int8`
+  - `tf.lite.TFLiteConverter.inference_input_type` and `tf.lite.TFLiteConverter.inference_output_type` set to target data type, default to `tf.float32`, supports `tf.float32, tf.uint8, tf.int`
   - `tf.lite.TFLiteConverter.target_ops` default to `[tf.lite.OpsSet.TFLITE_BUILTINS]`, supports `SELECT_TF_OPS, TFLITE_BUILTINS, TFLITE_BUILTINS_INT8`
     - `[tf.lite.OpsSet.TFLITE_BUILTINS]`: supported operations are quantized, others remain in float-point
     - `[tf.lite.OpsSet.TFLITE_BUILTINS_INT]`: aim for an `int8` fully quantized model, operations cannot be quantized throw errors
