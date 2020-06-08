@@ -16,7 +16,7 @@ The Tensorflow Model Optimiaztion package now contains a new tool to perform **q
 
 To train a fixed-point model, consider the [quantization-aware training method here in this repo](/quantization_aware_training/README.md). It is still working with **Tensorflow 1.14**, but will not work with a new version, due to the removal of `tf.contrib` and some changes on `tf.lite.TFLiteConverter`.
 
-## TensorFlow Model Quantization
+## TensorFlow Model Quantization (modified on 10/24/2019)
 
 The efficiency at inference time is critial when deploying machine learning models to devices with limited resources, such as IoT edge nodes and mobile devices. **Model quantization** is a tool to improve **inference efficiency**, by converting the variable data types inside a model (usually float32) into some data types with fewer numbers of bits (uint8, int8, float16, etc.), to overcome the constraints such as energy consumption, storage capacity, and computation power.
 
