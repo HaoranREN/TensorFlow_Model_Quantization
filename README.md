@@ -4,9 +4,13 @@ When using the Tensorflow Python API methods above to implement model quantizati
 
 **This is a tutorial of model quantization using TensorFlow, with suggestions based on personal experience.** The Tensorflow version here in examples is **1.14**, and models are built with **`tf.keras`**. Since the Tensorflow team said they are working on a new package [`Tensorflow Model Optimiaztion`](https://www.tensorflow.org/model_optimization), which includes some new implementations of model quantization per their [roadmap](https://www.tensorflow.org/model_optimization/guide/roadmap), I will keep looking for their updates and merge them into this repository if possible.
 
-The last modification here was on **6/8/2020**, where in the roadmap, the [Post training quantization for dynamic-range kernels](https://blog.tensorflow.org/2018/09/introducing-model-optimization-toolkit.html) (Post-training weight quantization), [Post training quantization for (8b) fixed-point kernels](https://blog.tensorflow.org/2019/06/tensorflow-integer-quantization.html) (Post-training integer quantization), and [Quantization aware training for (8b) fixed-point kernels and experimentation for <8b](https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html) are launched.
+The last modification here was on **10/30/2020**, where in the roadmap, the [Post training quantization for dynamic-range kernels](https://blog.tensorflow.org/2018/09/introducing-model-optimization-toolkit.html) (Post-training weight quantization), [Post training quantization for (8b) fixed-point kernels](https://blog.tensorflow.org/2019/06/tensorflow-integer-quantization.html) (Post-training integer quantization), and [Quantization aware training for (8b) fixed-point kernels and experimentation for <8b](https://blog.tensorflow.org/2020/04/quantization-aware-training-with-tensorflow-model-optimization-toolkit.html) are launched.
 
 **You are welcome to comment any issues, concerns, and suggestions, as well as anything regarding to Tensorflow updates. If you found this repository to be useful, I would like to thank you for your generosity to star** :star2: **this repository.**
+
+## Update 10/30/2020
+
+There is another quantization tool [Qkeras](https://github.com/google/qkeras) launched by a team from Google. It has a Keras like interface, and supports both common CNN and RNN. This is a good tool for advanced quantization research, but not compatible with `tf.lite` for deployment.
 
 ## Update 6/8/2020
 
